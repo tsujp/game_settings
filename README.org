@@ -1,1 +1,23 @@
-Foo
+#+TITLE: Game Settings
+
+Game settings and PC방 provision scripts (the latter just hacked together).
+
+* Bootstrap
+
+Copy-pasta this into a PowerShell and you're done, kid.
+
+#+begin_src ps1
+# Bootstrap PC방 시즐 fo 리즐, my 니즐.
+
+Set-ExecutionPolicy unrestricted
+Import-Module BitsTransfer
+
+$desktop_dir = [Environment]::GetFolderPath("Desktop")
+$pc_bang_setup = "pc_bang_windows.ps1"
+
+Start-BitsTransfer "https://raw.githubusercontent.com/tsujp/game_settings/refs/heads/master/$pc_bang_setup" $desktop_dir
+
+# Setup
+cd $desktop_dir
+& .\$pc_bang_setup
+#+end_src
